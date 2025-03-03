@@ -28,7 +28,7 @@ const initialState: DataViewerState = {
 export const DataViewerStore = signalStore(
   withState(initialState),
   withComputed(({ pagination }) => ({
-    page: computed(() => pagination().page),
+    page: computed(() => pagination().page ?? 1),
     requestOptions: computed(() => {
       return {
         // searchQuery: searchQuery(),

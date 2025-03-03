@@ -41,8 +41,4 @@ module.exports = tseslint.config(
     ],
     rules: {},
   },
-  {
-    files: ['*.ts'],
-    extends: ['plugin:@softarc/sheriff/default'],
-  },
 );

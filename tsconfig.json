@@ -21,8 +21,7 @@
     "paths": {
       "@my/data": ["./src/app/shared/data/index.ts"],
       "@my/ui": ["./src/app/shared/ui/index.ts"],
-      "@my/utils": ["./src/app/shared/utils/index.ts"],
-      "@my/users/*": ["./src/app/users/*"]
+      "@my/utils": ["./src/app/shared/utils/index.ts"]
     }
   },
   "angularCompilerOptions": {

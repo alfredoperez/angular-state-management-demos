@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "my-angular-starter": {
+    "angular-state-management-demos": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -20,7 +20,7 @@
         "build": {
           "builder": "@angular/build:application",
           "options": {
-            "outputPath": "dist/my-angular-starter",
+            "outputPath": "dist/angular-state-management-demos",
             "index": "src/index.html",
             "browser": "src/main.ts",
             "polyfills": ["zone.js"],
@@ -66,47 +66,16 @@
           "builder": "@angular/build:dev-server",
           "configurations": {
             "production": {
-              "buildTarget": "my-angular-starter:build:production"
+              "buildTarget": "angular-state-management-demos:build:production"
             },
             "development": {
-              "buildTarget": "my-angular-starter:build:development"
+              "buildTarget": "angular-state-management-demos:build:development"
             }
           },
           "defaultConfiguration": "development"
         },
         "extract-i18n": {
           "builder": "@angular/build:extract-i18n"
-        },
-        "storybook": {
-          "builder": "@storybook/angular:start-storybook",
-          "options": {
-            "configDir": ".storybook",
-            "browserTarget": "my-angular-starter:build",
-            "compodoc": true,
-            "compodocArgs": [
-              "-e",
-              "json",
-              "-d",
-              ".",
-              "-t",
-              "--minimal",
-              "--disablePrivate",
-              "--disableInternal",
-              "--disableSourceCode",
-              "--disableLifeCycleHooks"
-            ],
-            "port": 6006
-          }
-        },
-        "build-storybook": {
-          "builder": "@storybook/angular:build-storybook",
-          "options": {
-            "configDir": ".storybook",
-            "browserTarget": "my-angular-starter:build",
-            "compodoc": true,
-            "compodocArgs": ["-e", "json", "-d", "."],
-            "outputDir": "storybook-static"
-          }
         },
         "lint": {
           "builder": "@angular-eslint/builder:lint",

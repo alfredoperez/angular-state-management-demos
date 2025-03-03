@@ -1,7 +1,7 @@
 import { Component, inject } from '@angular/core';
 import { DevToolbarComponent } from 'ngx-dev-toolbar';
 import { FeatureFlagsService } from './shared/data/feature-flags/feature-flags.service';
-import { PageContainerComponent } from './shared/ui';
+import { PageContainerComponent } from './shared/ui/layout';
 
 @Component({
   imports: [PageContainerComponent, DevToolbarComponent],

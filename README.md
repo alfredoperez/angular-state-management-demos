@@ -1,62 +1,70 @@
 <div align="center">
 
-# 🚀 My Angular Starter
+# 🚀 Angular State Management Demos
 
-[![Angular Version](https://img.shields.io/badge/Angular-v18-dd0031.svg)](https://angular.io)
-[![Angular Query](https://img.shields.io/badge/Angular_Query-v1.0-blue.svg)](https://tanstack.com/query/latest)
+[![Angular Version](https://img.shields.io/badge/Angular-v19-dd0031.svg)](https://angular.io)
+[![TanStack Query](https://img.shields.io/badge/Angular_Query-v1.0-blue.svg)](https://tanstack.com/query/latest)
+[![NgRx](https://img.shields.io/badge/NgRx-v18-ba2bd2.svg)](https://ngrx.io/)
+[![NGXS](https://img.shields.io/badge/NGXS-v3.8-1b47ee.svg)](https://www.ngxs.io/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](CONTRIBUTING.md)
 
 </div>
 
-Welcome to **MyAngularStarter**, an Angular template designed to streamline the creation of projects for articles, talks, presentations, and demos with my preferred tools and practices.
+A comprehensive demonstration of different state management approaches in Angular applications. This project showcases implementations using NgRx, NGXS, and TanStack Query, helping developers understand and compare different state management solutions.
 
-## ✨ Features
+## ✨ State Management Solutions
 
-### 🎨 Styles
+### 🔄 Featured Libraries
 
-- **[Tailwind CSS](https://tailwindcss.com/docs/guides/angular):** Utility-first CSS framework for rapid UI development.
-- **[PrimeNG](https://primeng.org/):** Comprehensive UI component library for Angular.
+- **[NgRx](https://ngrx.io/):** A reactive state management library for Angular applications, built on top of RxJS.
+- **[NGXS](https://www.ngxs.io/):** A state management pattern + library for Angular applications.
+- **[TanStack Query](https://tanstack.com/query/latest/docs/framework/angular/installation):** Powerful data fetching and caching solution.
 
-### 🔄 State Management
+### List View Operations
+- [ ] Fetch and display list of items
+- [ ] Implement pagination
+- [ ] Add search with debounce
+- [ ] Load and display related entities in table
+- [ ] Add filtering capabilities
+- [ ] Handle loading and error states
 
-- **[TanStack Query](https://tanstack.com/query/latest/docs/framework/angular/installation):** Powerful data fetching and caching for Angular.
+### Form Operations (Wizard)
+- [ ] Multi-step form navigation
+- [ ] Persist form state between steps
+- [ ] Load dependent data (cascading dropdowns)
+- [ ] Auto-save form progress
+- [ ] Handle field validations
+- [ ] Implement optimistic updates
+- [ ] Support form cancellation
 
-### 🛠️ Other Tools
+### CRUD Operations
+- [ ] Create new items with wizard
+- [ ] Edit existing items
+  - [ ] Pre-fill wizard with item data
+  - [ ] Navigate to specific wizard step
+- [ ] Delete items
+  - [ ] Show confirmation dialog
+  - [ ] Remove from table with animation
+  - [ ] Handle deletion errors
+- [ ] Update items
+  - [ ] Show confirmation when needed
+  - [ ] Handle concurrent updates
 
-- **[Ag Grid](https://www.ag-grid.com/angular-data-grid/getting-started/):** Feature-rich data grid for Angular applications.
-- **[ngxtension](https://www.npmjs.com/package/ngxtension):** Angular extensions for enhanced development.
-
-### 🧑‍💻 Development
-
-- **[JSON Server](https://www.npmjs.com/package/json-server):** Simple full fake REST API.
-
-### 🧪 Testing
-
-- **[ng-mocks](https://ng-mocks.sudo.eu/extra/install):** Test Angular applications more easily.
-- **[Web Test Runner](https://dev.to/danywalls/testing-in-angular-replace-karma-to-web-test-runner-5gag):** Replaces Karma for more modern testing setups.
-- **[Storybook](https://storybook.js.org/docs/angular/get-started/introduction):** Isolated component development environment.
-  - **[Accessibility Testing](https://storybook.js.org/docs/writing-tests/accessibility-testing):** Ensure your applications are accessible.
-  - **[Story Source](https://www.npmjs.com/package/@storybook/addon-storysource):** Addon to show the code source of your stories.
-
-### 🌟 Code Quality
-
-- **[ESLint](https://github.com/angular-eslint/angular-eslint):** Pluggable linting utility for JavaScript and TypeScript.
-  - **[Sheriff](https://github.com/softarc-consulting/sheriff):** Enforces architecture rules.
-- **Prettier Plugins**
-  - `prettier-plugin-organize-attributes`: Automatically organize attributes in your code.
-  - `@trivago/prettier-plugin-sort-imports`: Prettier plugin to sort imports.
-  - `prettier-plugin-tailwindcss`: Integrates Tailwind CSS classes sorting with Prettier.
-
----
+### Details View
+- [ ] Route-based item loading
+- [ ] Sync route params with state
+- [ ] Load item details from cache/API
+- [ ] Handle related entity loading
+- [ ] Support offline data access
 
 ## 📦 Getting Started
 
 1. **Clone the repository:**
 
    ```sh
-   git clone https://github.com/yourusername/my-angular-starter.git
-   cd my-angular-starter
+   git clone https://github.com/yourusername/angular-state-management-demos.git
+   cd angular-state-management-demos
    ```
 
 2. **Install dependencies:**
@@ -73,34 +81,44 @@ Welcome to **MyAngularStarter**, an Angular template designed to streamline the 
 
 4. **Run the mocked API Server:**
    ```sh
-   pnpm run start-json-server 
+   pnpm run start-json-server
    ```
 
----
+## 🧪 Testing & Quality
+
+- **Unit Testing:** Using Web Test Runner and ng-mocks
+- **Component Testing:** With Storybook
+- **Code Quality:** ESLint with Sheriff for architecture rules
+- **Formatting:** Prettier with various plugins for consistent code style
 
 ## 📝 TODO
 
-- **Cypress Component Testing**
-- **ngrx**
-  - [ngrx toolkit](https://github.com/angular-architects/ngrx-toolkit)
-  - Signal store integration
-- **commitlint**
-  - husky
-  - Releaselog
+- **Implement NgRx demos**
 
----
+  - Basic CRUD operations
+  - Entity management
+  - Effects and side effects
+  - Signal store integration
+  - [ngrx toolkit](https://github.com/angular-architects/ngrx-toolkit)
+
+- **Implement NGXS demos**
+
+  - State management
+  - Actions and selectors
+  - Plugins usage
+  - Best practices
+
+- **Add Cypress Component Testing**
+- **Add commitlint with husky**
+- **Add Releaselog**
 
 ## 🤝 Contributing
 
-Contributions, issues, and feature requests are welcome! Feel free to check the [issues page](https://github.com/yourusername/my-angular-starter/issues).
-
----
+Contributions are welcome! Please check our [Contributing Guide](CONTRIBUTING.md) for details on how to submit pull requests, report issues, and contribute to the project.
 
 ## 📜 License
 
 This project is licensed under the MIT License.
-
----
 
 ## 📫 Contact
 

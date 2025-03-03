@@ -1,0 +1,112 @@
+// Modern Form Field Base Styles
+.mat-mdc-form-field {
+  --mdc-shape-small: 8px;
+
+  &.rounded-full {
+    --mdc-shape-small: 9999px;
+  }
+}
+
+// Global Material Form Field Overrides
+.mat-mdc-form-field {
+  .mat-mdc-text-field-wrapper {
+    background-color: white;
+    padding: 0 4px;
+  }
+
+  .mat-mdc-form-field-flex {
+    height: 48px;
+    align-items: center;
+  }
+
+  // Modern outline style
+  .mdc-notched-outline__leading,
+  .mdc-notched-outline__trailing,
+  .mdc-notched-outline__notch {
+    border-color: #e5e7eb !important;
+    transition: border-color 0.2s ease;
+  }
+
+  // Remove label floating animation
+  .mdc-notched-outline__notch {
+    border-top: none !important;
+  }
+
+  // Hover state
+  &:hover {
+    .mdc-notched-outline__leading,
+    .mdc-notched-outline__trailing,
+    .mdc-notched-outline__notch {
+      border-color: #d1d5db !important;
+    }
+  }
+
+  // Focused state
+  &.mat-focused {
+    .mdc-notched-outline__leading,
+    .mdc-notched-outline__trailing,
+    .mdc-notched-outline__notch {
+      border-color: theme('colors.indigo.600') !important;
+      border-width: 1px !important;
+    }
+  }
+
+  // Input padding and typography
+  .mat-mdc-form-field-infix {
+    padding: 8px 0;
+    font-size: 0.875rem;
+  }
+
+  // Placeholder styling
+  .mat-mdc-input-element::placeholder {
+    color: #9ca3af;
+  }
+
+  // Error state
+  &.mat-form-field-invalid {
+    .mdc-notched-outline__leading,
+    .mdc-notched-outline__trailing,
+    .mdc-notched-outline__notch {
+      border-color: theme('colors.red.500') !important;
+    }
+  }
+}
+
+// Select dropdown styling
+.mat-mdc-select-panel {
+  border-radius: 8px !important;
+  border: 1px solid #e5e7eb;
+  box-shadow:
+    0 4px 6px -1px rgb(0 0 0 / 0.1),
+    0 2px 4px -2px rgb(0 0 0 / 0.1) !important;
+}
+
+// Checkbox styling
+.mat-mdc-checkbox {
+  .mdc-checkbox__background {
+    border-color: #d1d5db !important;
+  }
+
+  .mdc-checkbox__native-control:enabled:checked ~ .mdc-checkbox__background {
+    border-color: theme('colors.indigo.600') !important;
+    background-color: theme('colors.indigo.600') !important;
+  }
+}
+
+// Radio button styling
+.mat-mdc-radio-button {
+  .mdc-radio__background {
+    .mdc-radio__outer-circle {
+      border-color: #d1d5db !important;
+    }
+  }
+
+  .mdc-radio__native-control:enabled:checked + .mdc-radio__background {
+    .mdc-radio__outer-circle {
+      border-color: theme('colors.indigo.600') !important;
+    }
+    .mdc-radio__inner-circle {
+      background-color: theme('colors.indigo.600') !important;
+    }
+  }
+}

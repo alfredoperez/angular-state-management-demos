@@ -1,35 +1,27 @@
 @use '@angular/material' as mat;
-@use 'tailwindcss';
-html {
-  color-scheme: light dark;
-  @include mat.theme(
-    (
-      color: mat.$violet-palette,
-      typography: (
-        plain-family: Roboto,
-        brand-family: Open Sans,
-        bold-weight: 900,
-        medium-weight: 500,
-        regular-weight: 300,
-      ),
-      density: 0,
-    )
-  );
-}
+@use 'styles/mat_theme-colors' as palette;
+@use 'tailwindcss' as spacing;
+@use './styles/material-overrides';
 
 /* Overlay */
-@import '@angular/cdk/overlay-prebuilt.css';
+@use '@angular/cdk/overlay-prebuilt.css' as *;
 
-html,
-body {
-  height: 100%;
-}
-body {
-  margin: 0;
-  font-family: Roboto, 'Helvetica Neue', sans-serif;
-}
-:host {
-  display: block;
-  width: 100%;
-  height: 100%;
+@layer base {
+  html {
+    @include mat.theme(
+      (
+        color: (
+          primary: palette.$primary-palette,
+          tertiary: palette.$tertiary-palette,
+        ),
+        typography: (
+          plain-family: var(--serif),
+          bold-weight: 800,
+          medium-weight: 600,
+          regular-weight: 400,
+        ),
+        density: 0,
+      )
+    );
+  }
 }

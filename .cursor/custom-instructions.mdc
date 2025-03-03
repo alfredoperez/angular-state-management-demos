@@ -1,0 +1,53 @@
+---
+description: 
+globs: 
+alwaysApply: false
+---
+# Angular Development Rules
+
+## Angular Version and Features
+
+- Always use Angular 19 features and syntax
+- Follow the rules defined in `.cursor/rules/angular19-rules.md`
+- Use standalone components exclusively
+- Use the new input/output syntax with signals
+- Use inject() for dependency injection
+- Follow modern template syntax (@if, @for, etc.)
+
+## Component Development
+
+- Follow BEM methodology for CSS
+- Use signals for state management
+- Implement proper cleanup in components
+- Use defer blocks for optimization
+- Follow the component structure defined in the rules
+
+## State Management
+
+- Implement state management solutions using:
+  - NgRx
+  - NGXS
+  - TanStack Query
+- Follow best practices for each solution
+- Use signals where appropriate
+
+## Testing
+
+- Write comprehensive unit tests
+- Follow AAA pattern (Arrange, Act, Assert)
+- Test components in isolation
+- Use proper mocking strategies
+
+## Code Style
+
+- Follow Angular style guide
+- Use consistent naming conventions
+- Maintain clean code principles
+- Document complex logic
+
+## Performance
+
+- Implement proper change detection strategies
+- Use defer blocks for lazy loading
+- Optimize rendering cycles
+- Follow Angular performance best practices

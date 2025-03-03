@@ -1,0 +1,260 @@
+---
+description: Theming for Angular Material 3
+globs: 
+alwaysApply: false
+---
+# Angular Material Theming Rules
+Version: Angular Material 16+
+Last Updated: 2024
+
+## General Theming Rules
+## Material configuration
+
+The project uses Angular Material v19.0.2 which brings several improvements and changes:
+
+- Enhanced Theming system with better CSS custom properties support
+- Improved accessibility features
+- Better component styling customization options
+
+To use Material in a project:
+
+1. Ensure the required dependencies are installed:
+
+   ```json
+   {
+     "@angular/material": "19.0.2",
+     "@angular/material-moment-adapter": "19.0.2"
+   }
+   ```
+
+2. Import the core Material styles:
+   - The core styles are available in `@core/styles/util/material`
+   - These include customizations for:
+     - Input fields
+     - Datepicker
+     - Snackbar notifications
+
+3. Configure your application theme:
+   - Create a `_theme.scss` file in your app's styles directory
+   - Define your color palette and theme variables or use the default ones
+   - Import and use the Material Theming system
+
+4. Apply the theme in your `styles.scss`:
+
+
+```scss
+   @use '@angular/material' as mat;
+
+   // Include Material core styles
+
+  html {
+    color-scheme: light dark;
+    @include mat.theme((
+      color: mat.$violet-palette,
+      typography: Roboto,
+      density: 0
+    ));
+  }
+```
+
+## Customize Angular Material Components: CSS custom properties
+
+To customize some Angular Material component properties we can use different approaches:
+
+- Component Tokens
+
+> [Component tokens](mdc:https:/material.angular.io/guide/theming#component-tokens) are a new way to style Material components.
+
+```css
+/* apps/my-app/src/styles/styles.scss */
+
+@include mat.form-field-overrides(
+    (
+      filled-disabled-label-text-color: var(--mat-sys-outline),
+      filled-disabled-input-text-color: var(--mat-sys-outline),
+    )
+  );
+```
+
+
+1. Theme Structure
+   - Always use `mat.theme()` for modern theming
+   - Include required categories: color, typography, density
+   - Apply theme using `mat.all-component-themes($theme)`
+   - Use theme-override mixins for component customization
+
+2. Color System
+   - Primary: Main brand color
+   - Accent: Secondary interactive elements
+   - Warn: Error states and destructive actions
+   - Use Tailwind color tokens for consistency
+   - Follow light/dark mode guidelines
+
+3. Typography
+   - Use consistent font weights: 400 (regular), 500 (medium), 700 (bold)
+   - Maintain readable line heights
+   - Use relative units (rem) for font sizes
+   - Follow accessibility guidelines for text contrast
+
+4. Density
+   - Default density: 0
+   - Comfortable density: -1
+   - Compact density: -2
+   - Consider touch targets in mobile contexts
+
+## Component-Specific Override Rules
+
+### Form Fields
+```scss
+@include mat.form-field-theme-override((
+  container-text-size: 1rem,
+  container-shape: 8px,
+  container-padding-horizontal: 1rem,
+  container-padding-vertical: 0.75rem,
+  active-indicator-height: 0,
+  hover-state-layer-color: transparent,
+  focus-state-layer-color: transparent
+));
+
+@include mat.text-field-theme-override((
+  background-color: white,
+  shape: 8px,
+  outline-color: theme('colors.gray.200'),
+  hover-outline-color: theme('colors.gray.300'),
+  focus-outline-color: theme('colors.primary.500'),
+  focus-outline-width: 1px
+));
+```
+
+### Buttons
+```scss
+@include mat.button-theme-override((
+  container-shape: 8px,
+  container-height: 40px,
+  hover-state-layer-opacity: 0.04,
+  focus-state-layer-opacity: 0.12
+));
+```
+
+### Cards
+```scss
+@include mat.card-theme-override((
+  container-shape: 12px,
+  outlined-container-shape: 12px,
+  container-color: white,
+  outlined-color: white,
+  outline-color: theme('colors.gray.200'),
+  container-elevation: 0
+));
+```
+
+### Dialogs
+```scss
+@include mat.dialog-theme-override((
+  container-shape: 12px,
+  container-padding: 24px,
+  container-elevation: 5
+));
+```
+
+### Menus
+```scss
+@include mat.menu-theme-override((
+  container-shape: 8px,
+  container-elevation: 2
+));
+```
+
+### Select
+```scss
+@include mat.select-theme-override((
+  container-shape: 8px,
+  menu-container-shape: 8px
+));
+```
+
+### Tables
+```scss
+@include mat.table-theme-override((
+  background-color: white,
+  header-cell-background-color: theme('colors.gray.50'),
+  row-hover-state-layer-color: theme('colors.gray.50'),
+  row-hover-state-layer-opacity: 1
+));
+```
+
+## Design Tokens Guidelines
+
+1. Shape Tokens
+   - Small components (buttons, fields): 8px
+   - Large components (cards, dialogs): 12px
+   - Consistent border-radius across related components
+
+2. Elevation Tokens
+   - Dialogs: 5
+   - Menus: 2
+   - Cards: 0 (flat design)
+   - Use elevation sparingly
+
+3. Color Tokens
+   - Use semantic color tokens
+   - Maintain consistent hover/focus states
+   - Follow accessibility contrast ratios
+   - Use theme() function for Tailwind colors
+
+4. Spacing Tokens
+   - Padding: multiples of 0.25rem
+   - Margins: consistent spacing scale
+   - Container padding: 1rem horizontal, 0.75rem vertical
+
+## Best Practices
+
+1. Component Overrides
+   - Create reusable mixins for common patterns
+   - Document token usage and purpose
+   - Maintain consistent naming conventions
+   - Group related components
+
+2. Theme Implementation
+   - Separate theme logic into dedicated files
+   - Use modern theme-override system
+   - Avoid direct CSS where possible
+   - Maintain backward compatibility
+
+3. Accessibility
+   - Maintain WCAG 2.1 compliance
+   - Ensure sufficient color contrast
+   - Support reduced motion
+   - Test with screen readers
+
+4. Performance
+   - Minimize CSS output
+   - Use efficient selectors
+   - Avoid deep nesting
+   - Optimize theme generation
+
+## Common Patterns
+
+1. Interactive States
+   - Hover: subtle background change
+   - Focus: clear outline or ring
+   - Active: visible feedback
+   - Disabled: reduced opacity
+
+2. Container Styles
+   - Consistent padding
+   - Proper spacing
+   - Clear boundaries
+   - Logical hierarchy
+
+3. Typography Scale
+   - Headings: 1.25rem - 2rem
+   - Body: 1rem
+   - Small text: 0.875rem
+   - Caption: 0.75rem
+
+4. Responsive Design
+   - Mobile-first approach
+   - Flexible containers
+   - Adaptive spacing
+   - Touch-friendly targets
