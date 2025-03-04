@@ -108,7 +108,8 @@ export class NgxsPageComponent implements OnInit {
   onAddUser(): void {
     this.#dialog.open(NgxsManageModalComponent, {
       width: '600px',
-      disableClose: true,
+      height: '600px',
+      disableClose: false,
     });
   }
 

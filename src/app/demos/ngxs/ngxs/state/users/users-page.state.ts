@@ -143,12 +143,12 @@ export class UsersPageState {
     return forkJoin([
       ctx.dispatch(new UserCollectionActions.FetchPage()),
       ctx.dispatch(new TeamCollectionActions.FetchAll()),
-      ctx.dispatch(new ProjectCollectionActions.FetchAll())
+      ctx.dispatch(new ProjectCollectionActions.FetchAll()),
     ]).pipe(
-      catchError(error => {
+      catchError((error) => {
         // Handle errors globally
         return of(error);
-      })
+      }),
     );
   }
 
