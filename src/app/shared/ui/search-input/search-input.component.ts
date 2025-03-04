@@ -1,12 +1,13 @@
 import { Component, model } from '@angular/core';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { FormsModule } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
+import { Subject, debounceTime, distinctUntilChanged, filter } from 'rxjs';
 
 @Component({
   selector: 'app-search-input',
-  standalone: true,
   imports: [FormsModule, MatFormFieldModule, MatIconModule, MatInputModule],
   template: `
     <mat-form-field appearance="outline" class="search-field w-full">
@@ -14,6 +15,7 @@ import { MatInputModule } from '@angular/material/input';
       <input
         type="text"
         [ngModel]="search()"
+        [disabled]="isDisabled"
         (ngModelChange)="onSearchChange($event)"
         matInput
         placeholder="Search contacts"
@@ -65,7 +67,22 @@ import { MatInputModule } from '@angular/material/input';
 export class SearchInputComponent {
   search = model.required<string>();
 
+  isDisabled = false;
+
+  #searchSubject = new Subject<string>();
+
+  constructor() {
+    this.#searchSubject
+      .pipe(
+        debounceTime(300),
+        filter((value) => value.length > 0),
+        distinctUntilChanged(),
+        takeUntilDestroyed(),
+      )
+      .subscribe((value) => this.search.set(value));
+  }
+
   onSearchChange(value: string) {
-    this.search.set(value);
+    this.#searchSubject.next(value);
   }
 }

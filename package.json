@@ -7,6 +7,7 @@
     "ng": "ng",
     "start": "ng serve",
     "start-json-server": "json-server --watch  db.json --port 3000",
+    "dev": "npm run start-json-server & ng serve --configuration development",
     "test": "jest",
     "test-coverage": "jest --coverage",
     "watch": "ng build --watch --configuration development",

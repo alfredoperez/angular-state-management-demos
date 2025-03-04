@@ -21,7 +21,7 @@ import { ColDef, RowClickedEvent, themeQuartz } from 'ag-grid-community';
       <mat-paginator
         aria-label="Select page"
         [length]="totalItems()"
-        [pageSize]="10"
+        [pageSize]="pageSize()"
         [pageSizeOptions]="[10, 20, 30]"
         [pageIndex]="page()"
         (page)="onPageChange($event)"
@@ -47,6 +47,7 @@ export class GridComponent {
   columnDefs = input.required<ColDef[]>();
   isPlaceholderData = input<boolean>(false);
   page = input<number>(0);
+  pageSize = input<number>(10);
   totalItems = input<number>(0);
 
   theme = themeQuartz;

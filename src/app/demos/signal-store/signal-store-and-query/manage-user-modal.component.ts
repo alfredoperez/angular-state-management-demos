@@ -6,7 +6,6 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { User } from '../../../shared/data/users/users.models';
 import { ButtonComponent } from '../../../shared/ui/button/button.component';
-import { usersQuery } from './data/users.queries';
 
 @Component({
   imports: [
@@ -102,8 +101,6 @@ export class ManageUserModalComponent {
   #dialogRef = inject(MatDialogRef);
   #fb = inject(FormBuilder);
 
-  addMutation = usersQuery.add();
-
   usersFormGroup = this.#fb.group({
     name: ['', [Validators.required]],
     age: ['', [Validators.required, Validators.min(18), Validators.max(120)]],
@@ -133,7 +130,6 @@ export class ManageUserModalComponent {
       updatedAt: new Date(),
     } as unknown as User;
 
-    this.addMutation.mutate(user);
     this.#dialogRef.close();
   }
 

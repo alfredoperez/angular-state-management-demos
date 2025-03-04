@@ -6,6 +6,8 @@ import { ListResponse, Pagination, RequestOptions } from './api.models';
 export abstract class ApiService<T> {
   #httpClient = inject(HttpClient);
 
+  DELAY = 2000;
+
   protected constructor(private entityName: string) {}
 
   public async fetchPage(
@@ -63,7 +65,7 @@ export abstract class ApiService<T> {
     const options = this.getOptions(requestOptions, body);
 
     return lastValueFrom(
-      this.#httpClient.request(method, url, options).pipe(delay(1000)),
+      this.#httpClient.request(method, url, options).pipe(delay(this.DELAY)),
     );
   }
 
@@ -76,9 +78,9 @@ export abstract class ApiService<T> {
     let params = {};
     if (options && options.pagination) {
       const { orderBy, orderDirection } = options;
-      const { limit, page } = options.pagination;
+      const { pageSize, page } = options.pagination;
       const paginationParams = {
-        _limit: limit?.toString(),
+        _limit: pageSize?.toString(),
         _page: (page ? page : 0).toString(),
         _sort: `${orderDirection === 'ASC' ? '' : '-'}${orderBy}`,
       };
@@ -104,9 +106,9 @@ export abstract class ApiService<T> {
     let hasMore = false;
 
     if (pagination) {
-      const { limit, page } = pagination;
-      if (limit && page) {
-        hasMore = total > limit * (page + 1);
+      const { pageSize, page } = pagination;
+      if (pageSize && page) {
+        hasMore = total > pageSize * (page + 1);
       }
     }
 

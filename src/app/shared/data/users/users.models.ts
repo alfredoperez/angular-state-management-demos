@@ -15,3 +15,16 @@ export const usersColumnDefs = [
   { field: 'team', headerName: 'Team' },
   { field: 'projects', headerName: 'Projects' },
 ];
+
+
+
+export interface UserViewModel {
+  id: string;
+  name: string;
+  email: string;
+  title: string;
+  team: string;
+  projects: string;
+  createdAt: string;
+  updatedAt: string;
+}

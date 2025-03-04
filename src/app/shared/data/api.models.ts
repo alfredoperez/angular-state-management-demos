@@ -1,5 +1,5 @@
 export interface Pagination {
-  limit: number;
+  pageSize: number;
 
   page: number;
 }
@@ -8,7 +8,7 @@ export interface RequestOptions {
   /**
    * The search query to filter the results
    */
-  searchQuery?: string;
+  search?: string;
 
   /**
    * The pagination options

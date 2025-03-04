@@ -21,7 +21,7 @@ interface DataViewerState {
 }
 
 const initialState: DataViewerState = {
-  pagination: { limit: 20, page: 1 },
+  pagination: { pageSize: 20, page: 1 },
   searchQuery: '',
 };
 

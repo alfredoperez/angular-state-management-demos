@@ -7,8 +7,9 @@ import {
   provideTanStackQuery,
   withDevtools,
 } from '@tanstack/angular-query-experimental';
-import { ModuleRegistry, ClientSideRowModelModule } from 'ag-grid-community';
+import { ClientSideRowModelModule, ModuleRegistry } from 'ag-grid-community';
 import { appRoutes } from './app.routes';
+import { provideNgxs } from './ngxs-provider';
 
 ModuleRegistry.registerModules([ClientSideRowModelModule]);
 export const appConfig: ApplicationConfig = {
@@ -17,5 +18,6 @@ export const appConfig: ApplicationConfig = {
     provideHttpClient(),
     provideAnimationsAsync(),
     provideTanStackQuery(new QueryClient(), withDevtools()),
+    provideNgxs(),
   ],
 };

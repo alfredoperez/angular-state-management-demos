@@ -6,7 +6,6 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { User } from '../../../shared/data/users/users.models';
 import { ButtonComponent } from '../../../shared/ui/button/button.component';
-import { usersQuery } from './data/users.queries';
 
 @Component({
   imports: [
@@ -98,11 +97,9 @@ import { usersQuery } from './data/users.queries';
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class ManageUserModalComponent {
+export class NgxsManageModalComponent {
   #dialogRef = inject(MatDialogRef);
   #fb = inject(FormBuilder);
-
-  addMutation = usersQuery.add();
 
   usersFormGroup = this.#fb.group({
     name: ['', [Validators.required]],
@@ -133,7 +130,6 @@ export class ManageUserModalComponent {
       updatedAt: new Date(),
     } as unknown as User;
 
-    this.addMutation.mutate(user);
     this.#dialogRef.close();
   }
 
