@@ -52,7 +52,7 @@
     "@angular/compiler-cli": "^19.1.5",
     "@jest/globals": "^29.7.0",
     "@tailwindcss/postcss": "^4.0.0",
-    "@trivago/prettier-plugin-sort-imports": "^5.2.0",
+    "@trivago/prettier-plugin-sort-imports": "^5.2.2",
     "@types/jest": "^29.5.12",
     "angular-eslint": "19.1.0",
     "autoprefixer": "^10.4.19",
